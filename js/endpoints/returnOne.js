@@ -20,7 +20,7 @@ module.exports = function(req, res) {
         }, function(err, result){
           if (err) return res.status(500).send(err);
           console.log("Cache Miss: "+randomData);
-          res.send("Cache Miss: "+randomData);
+          res.status(200).send("Cache Miss: "+randomData);
         });
     } else {
 
@@ -44,12 +44,12 @@ module.exports = function(req, res) {
           match['data'] = randomData;
           match.save();
           console.log("Cache Miss: "+randomData);
-          res.send("Cache Miss: "+randomData);
+          res.status(200).send("Cache Miss: "+randomData);
 
         // TTL Still valid - It's a hit!
         } else {
           console.log("Cache Hit: "+match['data']);
-          res.send("Cache Hit: "+match['data']);
+          res.status(200).send("Cache Hit: "+match['data']);
         }
 
       // Not Found - It's a miss!
@@ -64,7 +64,7 @@ module.exports = function(req, res) {
         }, function(err, result){
           if (err) return res.status(500).send(err);
           console.log("Cache Miss: "+randomData);
-          res.send("Cache Miss: "+randomData);
+          res.status(200).send("Cache Miss: "+randomData);
         });
       }
     }

@@ -8,10 +8,10 @@ module.exports = function(req, res) {
     if (err) return res.status(500).send(err);
     if (result !== null) {
       console.log("Deleted Key: "+result['key']);
-      res.send("Deleted Key: "+result['key']);
+      res.status(200).send("Deleted Key: "+result['key']);
     } else {
       console.log("Could not find key: "+key.toString());
-      res.send("Could not find key: "+key.toString());
+      res.status(200).send("Could not find key: "+key.toString());
     }
   });
 }

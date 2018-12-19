@@ -8,6 +8,6 @@ module.exports = function(req, res) {
   }).exec(function (err, result) {
     if (err) return res.status(500).send(err);
     console.log("Stored Keys:\n"+result);
-    res.send(JSON.stringify(result));
+    res.status(200).send(JSON.stringify(result));
   });
 }

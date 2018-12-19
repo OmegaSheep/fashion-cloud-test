@@ -10,12 +10,14 @@ module.exports = {
 
     return text;
   },
+  // PLEASE DEFINE ME
   mongoURI: function mongoURI() {
     return "";
   },
   itemLimit: function itemLimit() {
     return 10;
   },
+  // In milliseconds
   TTL: function TTL() {
     return 300000;
   }

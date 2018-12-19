@@ -22,7 +22,7 @@ module.exports = function(req, res) {
         match['data'] = data;
         match.save();
         console.log("Updated: "+data);
-        res.send("Updated: "+data);
+        res.status(200).send("Updated: "+data);
     } else {
       // Remove Oldest Item if needed.
       if (result.length >= MAX_AMOUNT) {
@@ -34,7 +34,7 @@ module.exports = function(req, res) {
       }, function(err, result){
         if (err) return res.status(500).send(err);
         console.log("Inserted: "+data);
-        res.send("Inserted: "+data);
+        res.status(200).send("Inserted: "+data);
       });
     }
   });

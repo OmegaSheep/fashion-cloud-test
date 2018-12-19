@@ -6,6 +6,6 @@ module.exports = function(req, res) {
   Cache.remove({}, function(err) {
   if (err) return res.send(500, { error: err });
    console.log("All caches emptied.");
-   res.send("All caches emptied.");
+   res.status(200).send("All caches emptied.");
   });
 }

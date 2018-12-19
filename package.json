@@ -1,31 +1,22 @@
 {
-  "name": "node-js-getting-started",
-  "version": "0.3.0",
-  "description": "A sample Node.js app using Express 4",
-  "engines": {
-    "node": "10.x"
-  },
+  "name": "fashioncloudtest",
+  "version": "1.0.0",
+  "description": "For a test.",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js",
-    "test": "node test.js"
+  "engines": {
+    "npm": "5.7.1"
   },
   "dependencies": {
+    "bluebird": "^3.5.0",
+    "body-parser": "^1.17.1",
     "ejs": "^2.5.6",
-    "express": "^4.15.2"
+    "express": "^4.15.2",
+    "json": "^9.0.6",
+    "mongoose": "^4.9.8",
+    "request": "^2.81.0"
   },
-  "devDependencies": {
-    "request": "^2.81.0",
-    "tape": "^4.7.0"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/heroku/node-js-getting-started"
-  },
-  "keywords": [
-    "node",
-    "heroku",
-    "express"
-  ],
-  "license": "MIT"
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
 }

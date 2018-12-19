@@ -7,13 +7,14 @@ const PORT = process.env.PORT || 5000
 
 var UTILITY = require('./js/utility.js');
 var SCHEMA = require('./js/schema.js');
+
 var RETURN_ALL = require('./js/endpoints/returnAll.js');
 var UPSERT = require('./js/endpoints/upsert.js');
 var DELETE_ONE = require('./js/endpoints/deleteOne.js');
 var DELETE_ALL = require('./js/endpoints/deleteAll.js');
 var Cache = mongoose.model('Cache', SCHEMA.cacheSchema);
 
-var mongouri = "";
+var mongouri = "mongodb://fashion:cloudy1@ds145083.mlab.com:45083/fashioncloud";
 var db = mongoose.connect(mongouri);
 var app = express();
 
@@ -23,17 +24,6 @@ app.use(bodyParser.urlencoded({ extended: false }))
 app.use(bodyParser.json())
 
 app.set('port', (process.env.PORT || 5000));
-
-app.use(express.static(__dirname + '/public'));
-
-// views is directory for all template files
-app.set('views', __dirname + '/views');
-app.set('view engine', 'ejs');
-
-// Load home page.
-app.get('/', function(request, response) {
-  response.render('pages/index');
-});
 
 app.get('/all', RETURN_ALL);
 app.post('/upsert', UPSERT);

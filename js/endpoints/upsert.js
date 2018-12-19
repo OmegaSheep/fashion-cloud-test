@@ -21,8 +21,8 @@ module.exports = function(req, res) {
     if (match) {
         match['data'] = data;
         match.save();
-        console.log("Updated: "+data);
-        res.status(200).send("Updated: "+data);
+        console.log("Updated: "+key+"/"+data);
+        res.status(200).send("Updated: "+key+"/"+data);
     } else {
       // Remove Oldest Item if needed.
       if (result.length >= MAX_AMOUNT) {
@@ -33,8 +33,8 @@ module.exports = function(req, res) {
         data: data
       }, function(err, result){
         if (err) return res.status(500).send(err);
-        console.log("Inserted: "+data);
-        res.status(200).send("Inserted: "+data);
+        console.log("Inserted: "+key+"/"+data);
+        res.status(200).send("Inserted: "+key+"/"+data);
       });
     }
   });

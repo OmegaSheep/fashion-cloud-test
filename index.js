@@ -73,7 +73,7 @@ module.exports = {
     });
   },
   testDeleteOne: function testDeleteOne() {
-    request.post({url:'http://127.0.0.1:5000/deleteone', form: {key:'key1'}}, function(error, response, body) {
+    request.post({url:'http://127.0.0.1:5000/deleteone', form: {key:'key3'}}, function(error, response, body) {
       try {
         console.assert(response && response.statusCode == 200);
       } catch (e) {
@@ -82,7 +82,7 @@ module.exports = {
     });
   },
   testReturnOne: function testReturnOne() {
-    request.post({url:'http://127.0.0.1:5000/returnone', form: {key:'key1'}}, function(error, response, body) {
+    request.post({url:'http://127.0.0.1:5000/returnone', form: {key:'key2'}}, function(error, response, body) {
       try {
         console.assert(response && response.statusCode == 200);
       } catch (e) {

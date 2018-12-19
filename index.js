@@ -1,5 +1,6 @@
 var express = require('express')
 var mongoose = require('mongoose');
+var bodyParser = require('body-parser');
 mongoose.Promise = require('bluebird');
 const path = require('path')
 const PORT = process.env.PORT || 5000
@@ -7,12 +8,18 @@ const PORT = process.env.PORT || 5000
 var UTILITY = require('./js/utility.js');
 var SCHEMA = require('./js/schema.js');
 var RETURN_ALL = require('./js/endpoints/returnAll.js');
+var DELETE_ONE = require('./js/endpoints/deleteOne.js');
 var Cache = mongoose.model('Cache', SCHEMA.cacheSchema);
 
-/* I defined the Mongo Connection URI in a Heroku environment variable for my own testing.
-Replace this as you need. */
-var mongouri = process.env.MONGOLAB_URI;
+var mongouri = "";
+var db = mongoose.connect(mongouri);
 var app = express();
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
+
 app.set('port', (process.env.PORT || 5000));
 
 app.use(express.static(__dirname + '/public'));
@@ -27,3 +34,8 @@ app.get('/', function(request, response) {
 });
 
 app.get('/all', RETURN_ALL);
+app.post('/delete', DELETE_ONE);
+
+app.listen(app.get('port'), function() {
+  console.log('Node app is running on port', app.get('port'));
+});

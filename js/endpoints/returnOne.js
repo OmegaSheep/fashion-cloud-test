@@ -19,7 +19,7 @@ module.exports = function(req, res) {
           key: key,
           data: randomData
         }, function(err, result){
-          if (err) return res.send(500, { error: err });
+          if (err) return res.status(500).send(err);
           console.log("Cache Miss: "+randomData);
           res.send("Cache Miss: "+randomData);
         });

@@ -26,8 +26,8 @@ app.use(bodyParser.json())
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/returnall', RETURN_ALL);
 app.post('/returnone', RETURN_ONE);
+app.get('/returnall', RETURN_ALL);
 app.post('/upsert', UPSERT);
 app.post('/delete', DELETE_ONE);
 app.get('/deleteall', DELETE_ALL);

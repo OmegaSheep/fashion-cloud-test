@@ -1,15 +1,15 @@
 var mongoose = require('mongoose');
 var SCHEMA = require('../schema.js');
+var UTILITY = require('../utility.js');
 var Cache = mongoose.model('Cache', SCHEMA.cacheSchema);
 
-const MAX_AMOUNT = 2;
+const MAX_AMOUNT = UTILITY.itemLimit();
 module.exports = function(req, res) {
   var key = req.body['key'];
   var data = req.body['data'];
 
   Cache.find({}, ["key", "data", "updated_at"], { sort: '-updated_at' }).exec(function (err, result) {
     if (err) return res.status(500).send(err);
-    console.log(result);
 
     // Find Match
     var match = null;

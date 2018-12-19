@@ -3,16 +3,15 @@ var SCHEMA = require('../schema.js');
 var UTILITY = require('../utility.js');
 var Cache = mongoose.model('Cache', SCHEMA.cacheSchema);
 
-const TTL = 300000; // Specify time to live in millseconds. Could put this in an environment variable somewhere.
-const MAX_AMOUNT = 2;
+const TTL = UTILITY.TTL(); // Specify time to live in millseconds. Could put this in an environment variable somewhere.
+const MAX_AMOUNT = UTILITY.itemLimit();
 
 module.exports = function(req, res) {
   var key = req.body['key'];
-  var randomData = UTILITY.randomData("");
+  var randomData = UTILITY.randomData();
 
   Cache.find({}, ["key", "data", "updated_at"], { sort: '-updated_at' }).exec(function (err, result) {
     if (err) return res.status(500).send(err);
-    console.log(result);
     // No items yet. It's a miss!
     if (result.length == 0) {
         Cache.create({

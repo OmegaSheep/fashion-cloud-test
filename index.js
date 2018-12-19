@@ -15,7 +15,13 @@ var DELETE_ONE = require('./js/endpoints/deleteOne.js');
 var DELETE_ALL = require('./js/endpoints/deleteAll.js');
 var Cache = mongoose.model('Cache', SCHEMA.cacheSchema);
 
-var mongouri = "mongodb://fashion:cloudy1@ds145083.mlab.com:45083/fashioncloud";
+var mongouri = UTILITY.mongoURI();
+try {
+  console.assert(mongouri != "");
+} catch (e) {
+  console.log("ERROR - Please specify mongo URI inside of /js/utility.js\n");
+};
+
 var db = mongoose.connect(mongouri);
 var app = express();
 

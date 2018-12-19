@@ -9,6 +9,7 @@ var UTILITY = require('./js/utility.js');
 var SCHEMA = require('./js/schema.js');
 
 var RETURN_ALL = require('./js/endpoints/returnAll.js');
+var RETURN_ONE = require('./js/endpoints/returnOne.js');
 var UPSERT = require('./js/endpoints/upsert.js');
 var DELETE_ONE = require('./js/endpoints/deleteOne.js');
 var DELETE_ALL = require('./js/endpoints/deleteAll.js');
@@ -25,7 +26,8 @@ app.use(bodyParser.json())
 
 app.set('port', (process.env.PORT || 5000));
 
-app.get('/all', RETURN_ALL);
+app.get('/returnall', RETURN_ALL);
+app.post('/returnone', RETURN_ONE);
 app.post('/upsert', UPSERT);
 app.post('/delete', DELETE_ONE);
 app.get('/deleteall', DELETE_ALL);

@@ -7,7 +7,7 @@ module.exports = function(req, res) {
   var data = req.body['data'];
   Cache.findOneAndUpdate({"key":key},{"key": key, "data": data}, {upsert: true}).exec(function (err, result) {
     if (err) return res.send(500, { error: err });
-    console.log("Upserted Succesfully:\nKey: "+key+"\nData: "+data);
-    res.send("Upserted Succesfully:\nKey: "+key+"\nData: "+data);
+    console.log("Cache Upserted - [Key: "+key+"] [Data: "+data+"]");
+    res.send("Cache Upserted - [Key: "+key+"] [Data: "+data+"]");
   });
 }
